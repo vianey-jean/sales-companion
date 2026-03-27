@@ -1,4 +1,4 @@
-import { Shield, StopCircle, PlayCircle } from "lucide-react";
+import { Shield, StopCircle, RotateCcw } from "lucide-react";
 
 interface ParametresSectionProps {
   autoBackupEnabled: boolean;
