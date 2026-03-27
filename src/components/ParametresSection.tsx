@@ -24,13 +24,13 @@ const ParametresSection = ({
         <span className="text-xs font-bold text-accent uppercase tracking-wider">
           Zone Administrateur
         </span>
-        {autoBackupEnabled && autoBackupPending && countdownSeconds > 0 && (
+        {autoBackupPending && countdownSeconds > 0 && autoBackupEnabled && (
           <span className="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent animate-pulse font-mono">
             Sauvegarde auto dans {Math.floor(countdownSeconds / 60)} min{" "}
             {String(countdownSeconds % 60).padStart(2, "0")} s
           </span>
         )}
-        {autoBackupEnabled ? (
+        {autoBackupEnabled && (
           <button
             onClick={onStopBackup}
             title="Arrêter la sauvegarde automatique"
@@ -38,13 +38,14 @@ const ParametresSection = ({
           >
             <StopCircle className="w-4 h-4 text-destructive" />
           </button>
-        ) : (
+        )}
+        {!autoBackupEnabled && (
           <button
             onClick={onStartBackup}
             title="Redémarrer la sauvegarde automatique"
             className="ml-1 p-1 rounded-md hover:bg-success/10 transition-colors"
           >
-            <PlayCircle className="w-4 h-4 text-success" />
+            <RotateCcw className="w-4 h-4 text-success" />
           </button>
         )}
       </div>
